@@ -4,11 +4,16 @@ export default function SketchObject(p5) {
     let height = 0;
     let width = 0;
     let devMode = false;
+    let doTheDraw = true;
     let squareGrid = [];
     let parentRendered = false;
 
     p5.setup = () => p5.createCanvas(width, height);
 
+    /**
+     * myCustomRedrawAccordingToNewPropsHandler: custom function reacting to prop change
+     * @param {JSON} props 
+     */
     p5.myCustomRedrawAccordingToNewPropsHandler = props => {
         if(props.dimensions.height !== height || props.dimensions.width !== width) {
             height = props.dimensions.h;
@@ -19,13 +24,14 @@ export default function SketchObject(p5) {
             devMode = true;
         }
         
+        doTheDraw = props.doTheDraw;
         squareSize = props.squareSize;
         squareGrid = props.squareGrid;
         parentRendered = true;
     }
 
     p5.draw = () => {
-        if(parentRendered && squareGrid.length) {
+        if(parentRendered && squareGrid.length && doTheDraw) {
             p5.background(250);
 
             //grid is displayed on devmode only
@@ -55,5 +61,7 @@ export default function SketchObject(p5) {
                 }
             }
         }
+
+        if(!doTheDraw) p5.clear();
     }
   };
