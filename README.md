@@ -2,6 +2,8 @@
 
 This component, made for the _Nuit de l'Info_, is rendering in React a game of life canvas. It can varies a lot thanks to hyperparameters, like taking a picture in entry and convert it to pixels for the game of life to begin (white pixels are converted to dead cells, and other to living cells).
 
+Unfortunately many features are implemented but not working as-is, that's too bad! But they are still accessible in the code for later :)
+
 ## Hyperparameters 
 
 // Number of squares on width line
